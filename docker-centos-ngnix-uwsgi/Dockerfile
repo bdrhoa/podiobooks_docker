@@ -14,6 +14,8 @@ RUN yum update -y
 
 # Install nginx
 RUN yum install -y nginx
+
+# Remove Default Nginx Configurations
 RUN rm /etc/nginx/conf.d/*
 
 # Install pip
@@ -33,12 +35,12 @@ RUN echo -e "\ndaemon off;" >> /etc/nginx/nginx.conf
 # Add uwsgi setup to nginx
 ADD uwsgi-nginx.conf /etc/nginx/conf.d/uwsgi-nginx.conf
 
-# Working dir
-WORKDIR /etc/nginx
-
 # Expose Ports
 EXPOSE 80
 EXPOSE 443
 
+# Logs As Volumes
+VOLUME ["/var/log/nginx"]
+
 # Default Command
-#CMD ["nginx"]
+CMD ["nginx"]
