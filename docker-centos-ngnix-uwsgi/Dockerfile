@@ -14,6 +14,7 @@ RUN yum update -y
 
 # Install nginx
 RUN yum install -y nginx
+RUN rm /etc/nginx/conf.d/*
 
 # Install pip
 RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python
@@ -32,9 +33,6 @@ RUN echo -e "\ndaemon off;" >> /etc/nginx/nginx.conf
 # Add uwsgi setup to nginx
 ADD uwsgi-nginx.conf /etc/nginx/conf.d/uwsgi-nginx.conf
 
-# expose sites config and logs
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx"]
-
 # Working dir
 WORKDIR /etc/nginx
 
@@ -43,4 +41,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Default Command
-CMD ["nginx"]
+#CMD ["nginx"]
