@@ -7,6 +7,7 @@ ADD nginx.repo /etc/yum.repos.d/nginx.repo
 
 # Add repos for other items
 ADD epel.repo /etc/yum.repos.d/epel.repo
+ADD postgresql.repo /etc/yum.repos.d/postgresql.repo
 ADD CentOS-fasttrack.repo /etc/yum.repos.d/CentOS-fasttrack.repo
 
 # Update centos
@@ -25,6 +26,11 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
 RUN yum install -y gcc 
 RUN yum install -y python-devel libxml2-devel pcre-devel jansson-devel libcap-devel uuid-devel sqlite-devel openldap-devel libyaml-devel
 RUN pip install uwsgi
+
+# Install Psycopg2
+RUN yum install -y --disablerepo=* --enablerepo=postgresql postgresql-devel
+RUN ln -s /usr/pgsql-9.3/bin/pg_config /usr/local/bin/pg_config
+RUN pip install psycopg2
 
 # Install git
 RUN yum install -y git
