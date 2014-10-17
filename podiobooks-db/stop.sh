@@ -1,1 +1,1 @@
-sudo docker stop printsat-db
+sudo docker stop podiobooks-db

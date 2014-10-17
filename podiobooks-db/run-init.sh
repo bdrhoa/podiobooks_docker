@@ -1,4 +1,4 @@
 sudo docker run --rm \
-	--volumes-from printsat-data \
-	-it cyface/printsat-db \
-	/home/printsat/postgres-initial-setup.sh
+	--volumes-from podiobooks-data \
+	-it podiobooks/podiobooks-db \
+	/home/podiobooks/postgres-initial-setup.sh

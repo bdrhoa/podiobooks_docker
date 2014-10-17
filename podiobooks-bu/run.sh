@@ -1,4 +1,4 @@
 sudo docker run --rm -it  \
-	--volumes-from printsat-data \
-	--link printsat-db:db \
-	cyface/printsat-bu
+	--volumes-from podiobooks-data \
+	--link podiobooks-db:db \
+	podiobooks/podiobooks-bu

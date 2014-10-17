@@ -1,10 +1,10 @@
-FROM cyface/printsat-centos-base
+FROM podiobooks/podiobooks-centos-base
 
-MAINTAINER Tim L. White "tim@cyface.com"
+MAINTAINER Tim L. White "tim@podiobooks.com"
 
-USER printsat
+USER podiobooks
 
 # Add setup script
-ADD printsat-bu.sh /home/printsat/printsat-bu.sh
+ADD podiobooks-bu.sh /home/podiobooks/podiobooks-bu.sh
 
-CMD ["/home/printsat/printsat-bu.sh"]
+CMD ["/home/podiobooks/podiobooks-bu.sh"]

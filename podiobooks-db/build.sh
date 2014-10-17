@@ -1,1 +1,1 @@
-sudo docker build -t="cyface/printsat-db" .
+sudo docker build -t="podiobooks/podiobooks-db" .
