@@ -50,14 +50,11 @@ ADD podiobooks-uwsgi.xml /home/podiobooks/podiobooks-uwsgi.xml
 # Add local app settings file to temp location - init setup will install
 ADD podiobooks_local_settings.py /home/podiobooks/local_settings.py
 
-# Get Code
-RUN git clone https://github.com/podiobooks/podiobooks.git /home/podiobooks/data/podiobooks
+# Add initial dataload script - note, you have to init the DB first manually
+ADD podiobooks-get-alldata.sh /home/podiobooks/podiobooks-get-alldata.sh
 
-# Install VirtualEnv
-RUN cd /home/podiobooks/data/podiobooks && ./devscripts/virtualenv/setup_prod_env.sh && \
-	. .env/bin/activate && python manage.py collectstatic --noinput
-	
-#RUN cp /home/podiobooks/local_settings.py /home/podiobooks/podiobooks/podiobooks/local_settings.py
+# Add initial setup file
+ADD podiobooks-initial-setup.sh /home/podiobooks/podiobooks-initial-setup.sh
 
 # Switch to root to run supervisord
 USER root
