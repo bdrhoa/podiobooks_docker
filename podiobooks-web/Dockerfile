@@ -44,11 +44,8 @@ RUN usermod -G podiobooks nginx
 # Switch to user
 USER podiobooks
 
-# Add Uwsgi File
-ADD podiobooks-uwsgi.xml /home/podiobooks/podiobooks-uwsgi.xml
-
 # Add local app settings file to temp location - init setup will install
-ADD podiobooks_local_settings.py /home/podiobooks/local_settings.py
+ADD podiobooks_settings_local.py /home/podiobooks/settings_local.py
 
 # Add initial dataload script - note, you have to init the DB first manually
 ADD podiobooks-get-alldata.sh /home/podiobooks/podiobooks-get-alldata.sh
@@ -63,3 +60,6 @@ USER root
 EXPOSE 80
 
 CMD ["supervisord", "-n", "-c", "/etc/nginx/supervisord.conf"]
+
+# Add Uwsgi File
+ADD podiobooks-uwsgi.xml /home/podiobooks/podiobooks-uwsgi.xml

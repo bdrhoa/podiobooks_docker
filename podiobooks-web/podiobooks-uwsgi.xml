@@ -1,12 +1,12 @@
 <uwsgi>
         <socket>/home/podiobooks/data/uwsgi.sock</socket>
         <chmod-socket>666</chmod-socket>
-        <pythonpath>/home/podiobooks/data/podiobooks</pythonpath>
+        <chdir>/home/podiobooks/data/podiobooks</chdir>
 	<home>/home/podiobooks/data/podiobooks/.env</home>
         <master>true</master>
         <pidfile>/home/podiobooks/data/uwsgi.pid</pidfile>
         <workers>2</workers>
         <enable-threads>true</enable-threads>
         <logto>/home/podiobooks/data/uwsgi.log</logto>
-        <wsgi-file>/home/podiobooks/data/podiobooks/podiobooks/podiobooks/wsgi.py</wsgi-file>
+        <wsgi-file>/home/podiobooks/data/podiobooks/podiobooks/wsgi.py</wsgi-file>
 </uwsgi>

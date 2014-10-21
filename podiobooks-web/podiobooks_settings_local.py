@@ -8,3 +8,4 @@ DATABASES = {
             "PORT": "5432"
         }
     }
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
