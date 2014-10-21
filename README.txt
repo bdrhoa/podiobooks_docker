@@ -13,12 +13,13 @@ Here's how to get this all up and going with Docker.
 5) Use the 'irun.sh' to go into a temp copy of the podiobooks-web container and then:
    A) su - podiobooks
    B) cd /home/podiobooks/data/podiobooks
-   C) vi local_settings.py and replace <CHANGEME> with a new password of your choosing.
+   C) vi settings_local.py and replace <CHANGEME> with a new password of your choosing.
    D) psql -h db -U podiobooks (pw is podiobooks) to get into postgres, and then use ALTER USER podiobooks PASSWORD <newpw>; to set your new password. 
    E) Use \q to exit psql.
    F) . .env/bin/activate
    G) python manage.py syncdb   to init the database in postgres.
-   H) Exit out of the temp container with 'exit'.
+   H) python manage.py migrate  to init the database in postgres.
+   I) Exit out of the temp container with 'exit'.
 
 6) Fire up the web tier with 'run.sh' int he podiobooks-web folder.
 
