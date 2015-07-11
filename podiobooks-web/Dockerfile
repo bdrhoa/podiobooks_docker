@@ -38,8 +38,8 @@ RUN rm /etc/nginx/conf.d/*
 # Add Supervisor Config File
 ADD supervisord.conf /etc/nginx/supervisord.conf
 
-# Add nginx config
-ADD podiobooks-nginx.conf /etc/nginx/conf.d/podiobooks-nginx.conf
+# Add nginx config stub
+ADD podiobooks-nginx-stub.conf /etc/nginx/conf.d/podiobooks-nginx-stub.conf
 
 # Add nginx to user  group
 RUN usermod -G podiobooks nginx
@@ -56,6 +56,12 @@ ADD podiobooks-get-alldata.sh /home/podiobooks/podiobooks-get-alldata.sh
 # Add initial setup file
 ADD podiobooks-initial-setup.sh /home/podiobooks/podiobooks-initial-setup.sh
 
+# Add nginx config
+ADD podiobooks-nginx.conf /home/podiobooks/podiobooks-nginx.conf
+
+# Add Uwsgi File
+ADD podiobooks-uwsgi.xml /home/podiobooks/podiobooks-uwsgi.xml
+
 # Switch to root to run supervisord
 USER root
 
@@ -63,6 +69,3 @@ USER root
 EXPOSE 80
 
 CMD ["supervisord", "-n", "-c", "/etc/nginx/supervisord.conf"]
-
-# Add Uwsgi File
-ADD podiobooks-uwsgi.xml /home/podiobooks/podiobooks-uwsgi.xml
