@@ -5,7 +5,7 @@ MAINTAINER Tim L. White "tim@podiobooks.com"
 # Install Redis
 RUN yum install -y --nogpgcheck redis 
 
-# Add Postgres User to podiobooks Group
+# Add redis User to podiobooks Group
 RUN usermod -G podiobooks redis
 
 # Expose Ports
