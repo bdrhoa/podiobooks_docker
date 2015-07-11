@@ -10,3 +10,11 @@ pip install psycopg2
 python manage.py collectstatic --noinput
 cp /home/podiobooks/settings_local.py /home/podiobooks/data/podiobooks/podiobooks/settings_local.py
 chown -R podiobooks.podiobooks /home/podiobooks/data/podiobooks
+python manage.py migrate --noinput
+cd /home/podiobooks/data
+mkdir .ssh
+chmod 700 .ssh
+cd .ssh
+ssh-keygen -t rsa -b 4096 -q -N "" -f id_rsa 
+cat id_rsa.pub
+echo "Create a new Deploy Key for podiobooks_data with the Public Key above"
