@@ -2,6 +2,9 @@ FROM podiobooks/podiobooks-centos-base
 
 MAINTAINER Tim L. White "tim@podiobooks.com"
 
+# Update the OS
+RUN yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
+
 # Install Prereqs
 RUN yum install -y libxslt uuid
 

@@ -4,6 +4,9 @@ MAINTAINER Tim L. White "tim@cyface.com"
 
 USER root
 
+# Update the OS
+RUN yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
+
 # Install uwsgi
 RUN yum install -y python-devel libxml2-devel pcre-devel jansson-devel libcap-devel uuid-devel sqlite-devel openldap-devel libyaml-devel
 RUN pip install uwsgi
