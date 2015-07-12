@@ -1,5 +1,8 @@
+#!/bin/bash
 cp /home/podiobooks/podiobooks-nginx.conf /home/podiobooks/data/podiobooks-nginx.conf
-cp /home/podiobooks/podiobooks-uwsgi.conf /home/podiobooks/data/podiobooks-uwsgi.conf
+cp /home/podiobooks/podiobooks-uwsgi.xml /home/podiobooks/data/podiobooks-uwsgi.xml
+cp /home/podiobooks/supervisord.conf /home/podiobooks/data/supervisord.conf
+cp /etc/nginx/uwsgi_params /home/podiobooks/data/uwsgi_params
 git clone --depth=1 https://github.com/podiobooks/podiobooks.git /home/podiobooks/data/podiobooks
 cd /home/podiobooks/data/podiobooks
 ./devscripts/virtualenv/setup_prod_env.sh
@@ -15,4 +18,5 @@ chmod 700 .ssh
 cd .ssh
 ssh-keygen -t rsa -b 4096 -q -N "" -f id_rsa 
 cat id_rsa.pub
+chown -R podiobooks.podiobooks .ssh
 echo "Create a new Deploy Key for podiobooks_data with the Public Key above"

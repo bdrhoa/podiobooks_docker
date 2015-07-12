@@ -29,23 +29,14 @@ RUN yum install -y openssl-devel openssl
 # Install nginx
 RUN yum install -y --disablerepo=* --enablerepo=nginx nginx
 
-# Turn off Daemon of nginx so that it can be managed by Docker
-RUN echo -e "\ndaemon off;" >> /etc/nginx/nginx.conf
-
-# Delete default nginx configs
-RUN rm /etc/nginx/conf.d/* 
-
-# Add Supervisor Config File
-ADD supervisord.conf /etc/nginx/supervisord.conf
-
-# Add nginx config stub
-ADD podiobooks-nginx-stub.conf /etc/nginx/conf.d/podiobooks-nginx-stub.conf
-
 # Add nginx to user  group
 RUN usermod -G podiobooks nginx
 
 # Switch to user
 USER podiobooks
+
+# Add Supervisor Config File
+ADD supervisord.conf /home/podiobooks/supervisord.conf
 
 # Add local app settings file to temp location - init setup will install
 ADD podiobooks_settings_local.py /home/podiobooks/settings_local.py
@@ -68,4 +59,4 @@ USER root
 # Expose Web Port
 EXPOSE 80
 
-CMD ["supervisord", "-n", "-c", "/etc/nginx/supervisord.conf"]
+CMD ["supervisord", "-n", "-c", "/home/podiobooks/data/supervisord.conf"]
