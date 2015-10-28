@@ -18,5 +18,6 @@ chmod 700 .ssh
 cd .ssh
 ssh-keygen -t rsa -b 4096 -q -N "" -f id_rsa 
 cat id_rsa.pub
+cd ..
 chown -R podiobooks.podiobooks .ssh
 echo "Create a new Deploy Key for podiobooks_data with the Public Key above"
