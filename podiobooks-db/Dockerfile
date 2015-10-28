@@ -18,10 +18,10 @@ RUN usermod -G podiobooks postgres
 USER postgres
 
 # Add postgres init file
-ADD postgres-initial-setup.sh /home/podiobooks/postgres-initial-setup.sh
+ADD postgres-initial-setup.sh /opt/podiobooks/postgres-initial-setup.sh
 
 # Expose Ports
 EXPOSE 5432
 
-# Start uWSGI
-CMD ["/usr/pgsql-9.3/bin/postgres", "-D", "/home/podiobooks/data/db/"]
+# Start Postgres When Container Starts By Default
+CMD ["/usr/pgsql-9.3/bin/postgres", "-D", "/opt/podiobooks/data/db/"]

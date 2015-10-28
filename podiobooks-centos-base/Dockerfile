@@ -13,6 +13,9 @@ RUN yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
 # Install compiler
 RUN yum install -y gcc 
 
+# Install Sudo
+RUN yum install -y sudo
+
 # Install & Upgrade pip
 RUN yum install -y --nogpgcheck python-pip
 RUN pip install --upgrade pip
@@ -28,9 +31,13 @@ RUN yum install -y git
 RUN pip install supervisor
 
 # Create podiobooks user
-RUN useradd -u 451 podiobooks -d /home/podiobooks -c "Podiobooks User"
-RUN chown -R podiobooks.podiobooks /home/podiobooks
-RUN chmod -R g+rwx /home/podiobooks
+RUN useradd -u 451 podiobooks -c "Podiobooks User"
+RUN echo 'podiobooks ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Create Podiobooks Directory
+RUN mkdir /opt/podiobooks
+RUN chown -R podiobooks.podiobooks /opt/podiobooks
+RUN chmod -R g+rwx /opt/podiobooks
 
 # Default Command
 CMD ["/bin/bash"]

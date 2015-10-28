@@ -8,13 +8,13 @@ RUN yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
 USER podiobooks
 
 # Make a directory to use
-RUN mkdir /home/podiobooks/data
+RUN mkdir /opt/podiobooks/data
 
-#RUN chown podiobooks.podiobooks /home/podiobooks/data
-RUN chmod g+rwx /home/podiobooks/data
+#RUN chown podiobooks.podiobooks /opt/podiobooks/data
+RUN chmod g+rwx /opt/podiobooks/data
 
 # Expose Volume for Cther Containers to Grab Onto
-VOLUME ["/home/podiobooks/data"]
+VOLUME ["/opt/podiobooks/data"]
 
 CMD ["/bin/bash"]
 

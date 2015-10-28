@@ -36,22 +36,22 @@ RUN usermod -G podiobooks nginx
 USER podiobooks
 
 # Add Supervisor Config File
-ADD supervisord.conf /home/podiobooks/supervisord.conf
+ADD supervisord.conf /opt/podiobooks/supervisord.conf
 
 # Add local app settings file to temp location - init setup will install
-ADD podiobooks_settings_local.py /home/podiobooks/settings_local.py
+ADD podiobooks_settings_local.py /opt/podiobooks/settings_local.py
 
 # Add initial dataload script - note, you have to init the DB first manually
-ADD podiobooks-get-alldata.sh /home/podiobooks/podiobooks-get-alldata.sh
+ADD podiobooks-get-alldata.sh /opt/podiobooks/podiobooks-get-alldata.sh
 
 # Add initial setup file
-ADD podiobooks-initial-setup.sh /home/podiobooks/podiobooks-initial-setup.sh
+ADD podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initial-setup.sh
 
 # Add nginx config
-ADD podiobooks-nginx.conf /home/podiobooks/podiobooks-nginx.conf
+ADD podiobooks-nginx.conf /opt/podiobooks/podiobooks-nginx.conf
 
 # Add Uwsgi File
-ADD podiobooks-uwsgi.xml /home/podiobooks/podiobooks-uwsgi.xml
+ADD podiobooks-uwsgi.xml /opt/podiobooks/podiobooks-uwsgi.xml
 
 # Switch to root to run supervisord
 USER root
@@ -59,4 +59,4 @@ USER root
 # Expose Web Port
 EXPOSE 80
 
-CMD ["supervisord", "-n", "-c", "/home/podiobooks/data/supervisord.conf"]
+CMD ["supervisord", "-n", "-c", "/opt/podiobooks/data/supervisord.conf"]

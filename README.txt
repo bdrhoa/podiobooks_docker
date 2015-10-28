@@ -12,7 +12,7 @@ Here's how to get this all up and going with Docker.
 
 5) Use the 'irun.sh' to go into a temp copy of the podiobooks-web container and then:
    A) su - podiobooks
-   B) cd /home/podiobooks/data/podiobooks
+   B) cd /opt/podiobooks/data/podiobooks
    C) ./podiobooks-initial-setup.sh
    D) Copy the ssh key that it generates, keep ssh window open
    E) Go to GitHub.com/podiobooks in your web browser
@@ -30,7 +30,7 @@ Here's how to get this all up and going with Docker.
 
 6) Fire up the web tier with 'run.sh' int he podiobooks-web folder.
 
-7) You can use the docker-interactive-shell.sh or the irun.sh scripts to get into a container that will let you take a look at the /home/podiobooks/data dir which has all logs - you can also use it to pull code updates, export backups, etc.
+7) You can use the docker-interactive-shell.sh or the irun.sh scripts to get into a container that will let you take a look at the /opt/podiobooks/data dir which has all logs - you can also use it to pull code updates, export backups, etc.
 
 Enjoy !
 
