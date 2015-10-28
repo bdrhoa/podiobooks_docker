@@ -1,18 +1,18 @@
 #!/bin/bash
-cp /home/podiobooks/podiobooks-nginx.conf /home/podiobooks/data/podiobooks-nginx.conf
-cp /home/podiobooks/podiobooks-uwsgi.xml /home/podiobooks/data/podiobooks-uwsgi.xml
-cp /home/podiobooks/supervisord.conf /home/podiobooks/data/supervisord.conf
-cp /etc/nginx/uwsgi_params /home/podiobooks/data/uwsgi_params
-git clone --depth=1 https://github.com/podiobooks/podiobooks.git /home/podiobooks/data/podiobooks
-cd /home/podiobooks/data/podiobooks
+cp /opt/podiobooks/podiobooks-nginx.conf /opt/podiobooks/data/podiobooks-nginx.conf
+cp /opt/podiobooks/podiobooks-uwsgi.xml /opt/podiobooks/data/podiobooks-uwsgi.xml
+cp /opt/podiobooks/supervisord.conf /opt/podiobooks/data/supervisord.conf
+cp /etc/nginx/uwsgi_params /opt/podiobooks/data/uwsgi_params
+git clone --depth=1 https://github.com/podiobooks/podiobooks.git /opt/podiobooks/data/podiobooks
+cd /opt/podiobooks/data/podiobooks
 ./devscripts/virtualenv/setup_prod_env.sh
 . .env/bin/activate
 pip install psycopg2
 python manage.py collectstatic --noinput
-cp /home/podiobooks/settings_local.py /home/podiobooks/data/podiobooks/podiobooks/settings_local.py
-chown -R podiobooks.podiobooks /home/podiobooks/data/podiobooks
+cp /opt/podiobooks/settings_local.py /opt/podiobooks/data/podiobooks/podiobooks/settings_local.py
+chown -R podiobooks.podiobooks /opt/podiobooks/data/podiobooks
 python manage.py migrate --noinput
-cd /home/podiobooks/data
+cd /opt/podiobooks/data
 mkdir .ssh
 chmod 700 .ssh
 cd .ssh
