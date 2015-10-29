@@ -5,7 +5,7 @@ MAINTAINER Tim L. White "tim@cyface.com"
 USER root
 
 # Update the OS
-RUN yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
+RUN yum update && yum upgrade -y --nogpgcheck
 
 # Install uwsgi
 RUN yum install -y python-devel libxml2-devel pcre-devel jansson-devel libcap-devel uuid-devel sqlite-devel openldap-devel libyaml-devel
@@ -38,20 +38,8 @@ USER podiobooks
 # Add Supervisor Config File
 ADD supervisord.conf /opt/podiobooks/supervisord.conf
 
-# Add local app settings file to temp location - init setup will install
-ADD podiobooks_settings_local.py /opt/podiobooks/settings_local.py
-
-# Add initial dataload script - note, you have to init the DB first manually
-ADD podiobooks-get-alldata.sh /opt/podiobooks/podiobooks-get-alldata.sh
-
 # Add initial setup file
 ADD podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initial-setup.sh
-
-# Add nginx config
-ADD podiobooks-nginx.conf /opt/podiobooks/podiobooks-nginx.conf
-
-# Add Uwsgi File
-ADD podiobooks-uwsgi.xml /opt/podiobooks/podiobooks-uwsgi.xml
 
 # Switch to root to run supervisord
 USER root
