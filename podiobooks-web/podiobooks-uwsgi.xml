@@ -2,7 +2,7 @@
         <socket>/opt/podiobooks/data/uwsgi.sock</socket>
         <chmod-socket>666</chmod-socket>
         <chdir>/opt/podiobooks/data/podiobooks</chdir>
-	<opt>/opt/podiobooks/data/podiobooks/.env</opt>
+	<virtualenv>/opt/podiobooks/data/podiobooks/.env</virtualenv>
         <master>true</master>
         <pidfile>/opt/podiobooks/data/uwsgi.pid</pidfile>
         <workers>4</workers>
