@@ -9,4 +9,4 @@ DATABASES = {
         }
     }
 DEBUG = False
-ALLOWED_HOSTS=['.cyface.com', '.podiobooks.com', '127.0.0.1']
+ALLOWED_HOSTS=['.cyface.com', '.podiobooks.com', '127.0.0.1', 'localhost']
