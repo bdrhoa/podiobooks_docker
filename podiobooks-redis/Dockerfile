@@ -14,5 +14,5 @@ RUN usermod -G podiobooks redis
 # Expose Ports
 EXPOSE 6379
 
-# Start uWSGI
+# Start Redis
 CMD ["/usr/bin/redis-server"]
