@@ -44,6 +44,9 @@ ADD podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initial-setup.sh
 # Switch to root to run supervisord
 USER root
 
+# Auto-CD to Podiobooks Dir
+RUN echo "cd /opt/podiobooks/data/" >> /root/.bash_profile
+
 # Expose Web Port
 EXPOSE 80
 

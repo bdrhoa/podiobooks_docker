@@ -2,6 +2,7 @@
 cp /opt/podiobooks/supervisord.conf /opt/podiobooks/data/supervisord.conf
 cp /etc/nginx/uwsgi_params /opt/podiobooks/data/uwsgi_params
 git clone --depth=1 https://github.com/podiobooks/podiobooks.git /opt/podiobooks/data/podiobooks
+git clone --depth=1 https://github.com/podiobooks/podiobooks_dep.git /opt/podiobooks/data/podiobooks_dep
 cd /opt/podiobooks/data/podiobooks
 ./devscripts/docker/setup_docker_env.sh
 . .env/bin/activate
