@@ -1,6 +1,6 @@
 Here's how to get this all up and going with Docker.
 
-The "install.sh" script in this directory should do all of this for you except step 5.
+The "install.sh" script in this directory should do steps 1-4 for you.
 
 0) Build all your images by going into each subfolder and running the 'build.sh' script in there. (Or run build-all.sh in this dir).
 
