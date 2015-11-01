@@ -16,10 +16,10 @@ cd /opt/podiobooks/data/podiobooks
 . .env/bin/activate
 
 # Initialize the Django DB
-python manage.py migrate --noinput --settings=settings_docker
+python manage.py migrate --noinput --settings=podiobooks.settings_docker
 
 # Collect the Static Files
-python manage.py collectstatic --noinput --settings=settings_docker
+python manage.py collectstatic --noinput --settings=podiobooks.settings_docker
 
 # Make sure permissions are correct
 chown -R podiobooks.podiobooks /opt/podiobooks/data/podiobooks
