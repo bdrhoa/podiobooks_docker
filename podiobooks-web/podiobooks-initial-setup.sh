@@ -8,6 +8,7 @@ git clone --depth=1 https://github.com/podiobooks/podiobooks.git /opt/podiobooks
 
 # Link the config files for dev, we can change to staging/prod later by moving symlink
 ln -s /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks-nginx.conf /opt/podiobooks/data/podiobooks-nginx.conf
+ln -s /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks-uwsgi-local.xml /opt/podiobooks/data/podiobooks-uwsgi-local.xml
 
 # Install VirtualEnv
 cd /opt/podiobooks/data/podiobooks

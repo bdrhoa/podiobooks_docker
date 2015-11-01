@@ -16,7 +16,7 @@ The "install.sh" script in this directory should do steps 1-4 for you.
     A) Make note of the SSH key you saw output from step 4.
     E) Go to GitHub.com/podiobooks in your web browser
     F) Log in as podiobooks
-    G) Go to podiobooks/podiobooks_docker
+    G) Go to podiobooks/podiobooks_data
     H) Go to settings
     I) Go to Deploy Keys
     J) Add Key
@@ -24,11 +24,17 @@ The "install.sh" script in this directory should do steps 1-4 for you.
     L) Paste in the ssh key you copied.
     M) Save
 
-6) Open a shell window to this dir and run:
+6) Repeat Step 5 for the podiobooks_dep repo.
+
+7) Open a shell window to this dir and run:
    ./podiobooks-web/podiobooks-get-alldata.sh
    This will install the alldata package.
 
-7) You can use the docker-interactive-shell.sh or the irun.sh scripts to get into a container that will let you take a look at the /opt/podiobooks/data dir which has all logs - you can also use it to pull code updates, export backups, etc.
+8) Open a shell window to this dir and run:
+    ./podiobooks-web/podiobooks-get-dep.sh
+   This will install the deployment repository with per-server configs.
+
+9) You can use the docker-interactive-shell.sh or the irun.sh scripts to get into a container that will let you take a look at the /opt/podiobooks/data dir which has all logs - you can also use it to pull code updates, export backups, etc.
 
 Enjoy !
 
