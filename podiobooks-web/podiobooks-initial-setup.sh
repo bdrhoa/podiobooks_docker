@@ -3,14 +3,11 @@
 cp /opt/podiobooks/supervisord.conf /opt/podiobooks/data/supervisord.conf
 cp /etc/nginx/uwsgi_params /opt/podiobooks/data/uwsgi_params
 
-# Clone the Git Repos; you will need to enter username and password for the private ones
+# Clone the Podiobooks Git Repo
 git clone --depth=1 https://github.com/podiobooks/podiobooks.git /opt/podiobooks/data/podiobooks
-git clone --depth=1 https://github.com/podiobooks/podiobooks_dep.git /opt/podiobooks/data/podiobooks_dep
-git clone --depth=1 https://github.com/podiobooks/podiobooks_dep.git /opt/podiobooks/data/podiobooks_data
 
 # Link the config files for dev, we can change to staging/prod later by moving symlink
 ln -s /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks-nginx.conf /opt/podiobooks/data/podiobooks-nginx.conf
-ln -s /opt/podiobooks/data/podiobooks_dep/docker/podiobooks-uwsgi-dev.xml /opt/podiobooks/data/podiobooks-uwsgi-dev.xml
 
 # Install VirtualEnv
 cd /opt/podiobooks/data/podiobooks
