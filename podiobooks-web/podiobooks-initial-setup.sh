@@ -9,7 +9,6 @@ git clone --depth=1 https://github.com/podiobooks/podiobooks.git /opt/podiobooks
 # Link the config files for dev, we can change to staging/prod later by moving symlink
 ln -s /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks-nginx.conf /opt/podiobooks/data/podiobooks-nginx.conf
 ln -s /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks-uwsgi.xml /opt/podiobooks/data/podiobooks-uwsgi.xml
-ln -s /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks-uwsgi-local.xml /opt/podiobooks/data/podiobooks-uwsgi-local.xml
 
 # Install VirtualEnv
 cd /opt/podiobooks/data/podiobooks
@@ -17,10 +16,10 @@ cd /opt/podiobooks/data/podiobooks
 . .env/bin/activate
 
 # Initialize the Django DB
-python manage.py migrate --noinput
+python manage.py migrate --noinput --settings=settings_docker
 
 # Collect the Static Files
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput --settings=settings_docker
 
 # Make sure permissions are correct
 chown -R podiobooks.podiobooks /opt/podiobooks/data/podiobooks
