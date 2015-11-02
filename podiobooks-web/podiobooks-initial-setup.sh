@@ -36,4 +36,4 @@ ssh-keygen -t rsa -b 4096 -q -N "" -f id_rsa
 cat id_rsa.pub
 cd ..
 chown -R podiobooks.podiobooks .ssh
-echo "Create a new Deploy Key for podiobooks_data with the Public Key above"
+echo "Create a new GitHub SSH Key for podiobooks with the Public Key above"
