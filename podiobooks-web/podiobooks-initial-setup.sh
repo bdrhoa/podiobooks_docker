@@ -21,8 +21,11 @@ python manage.py migrate --noinput --settings=podiobooks.settings_docker
 # Create Initial Superuser - Make sure you change PW
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell --settings=podiobooks.settings_docker
 
-# Collect the Static Files
+# Collect the Static Files & do other updates
 python manage.py collectstatic --noinput --settings=podiobooks.settings_docker
+python manage.py collectmedia --settings=podiobooks.settings_docker
+python manage.py mub_minify --settings=podiobooks.settings_docker
+python manage.py localize_title_covers --settings=podiobooks.settings_docker
 
 # Make sure permissions are correct
 chown -R podiobooks.podiobooks /opt/podiobooks/data/podiobooks
