@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo docker run --rm -it \
+sudo docker run --rm -i \
         --volumes-from podiobooks-data \
 	    --link podiobooks-db:db \
         --link podiobooks-redis:redis \
