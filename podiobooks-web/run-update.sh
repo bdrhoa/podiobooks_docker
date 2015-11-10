@@ -3,5 +3,3 @@ sudo docker run --rm -i \
         --link podiobooks-db:db \
         --link podiobooks-redis:redis \
         podiobooks/podiobooks-web /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks_update.sh
-./stop.sh
-./start.sh
