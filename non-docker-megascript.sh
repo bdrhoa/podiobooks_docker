@@ -2,6 +2,8 @@
 # This file runs everything to set up a single server, rather than individual Docker containers.
 # This assumes CentOS 7.1 as the base
 
+# Start with this: git clone git@github.com:podiobooks/podiobooks_docker.git
+
 ## OS
 
 # Add repos for specialty items
