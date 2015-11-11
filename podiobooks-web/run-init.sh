@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 sudo docker run \
 	--rm \
 	--volumes-from podiobooks-data \
