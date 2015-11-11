@@ -60,6 +60,10 @@ usermod -G podiobooks postgres
 cp podiobooks-db/postgres-initial-setup.sh /opt/podiobooks/postgres-initial-setup.sh
 chown postgres.postgres /opt/podiobooks/postgres-initial-setup.sh
 
+# Set up DNS aliases
+echo "127.0.0.1 db" >> /etc/cloud/templates/hosts.redhat.tmpl
+echo "127.0.0.1 db" >> /etc/hosts
+
 ## Redis
 yum install -y --nogpgcheck redis
 
@@ -68,6 +72,10 @@ usermod -G podiobooks redis
 
 # Copy redis config for local editing
 cp /etc/redis.conf /opt/podiobooks/data/redis.conf
+
+# Set up DNS aliases
+echo "127.0.0.1 redis" >> /etc/cloud/templates/hosts.redhat.tmpl
+echo "127.0.0.1 redis" >> /etc/hosts
 
 
 ## Varnish
@@ -107,7 +115,7 @@ wget https://bootstrap.pypa.io/get-pip.py \
 /usr/local/bin/pip install virtualenv
 
 # Add nginx official repository
-cp podiobooks-web/nginx.repo /etc/yum.repos.d/nginx.repo
+cp ./podiobooks-web/nginx.repo /etc/yum.repos.d/nginx.repo
 
 # Install nginx
 yum install -y --disablerepo=* --enablerepo=nginx nginx
@@ -125,7 +133,10 @@ cp ./podiobooks-web/podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initi
 chown -R podiobooks.podiobooks /opt/podiobooks
 chmod -R g+rwx /opt/podiobooks
 
+# Run su - postgres
 # Run /opt/podiobooks/postgres-initial-setup.sh
+# Run /usr/pgsql-9.3/bin/postgres -D /opt/podiobooks/data/db/ > /opt/podiobooks/data/db/postgres.log 2>&1 &
+# Run exit;su - podiobooks
 # Run /opt/podiobooks/podiobooks-initial-setup.sh
 # A) Make note of the SSH key you saw output from step 4.
 # E) Go to GitHub.com/podiobooks in your web browser
@@ -139,3 +150,4 @@ chmod -R g+rwx /opt/podiobooks
 
 # Run /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks_get_alldata.sh
 # Run /opt/podiobooks/data/podiobooks/devscripts/docker/podiobooks_get_dep.sh
+# Run supervisord -c /opt/podiobooks/data/supervisord.conf
