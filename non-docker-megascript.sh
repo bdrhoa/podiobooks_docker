@@ -9,9 +9,9 @@
 ## OS
 
 # Add repos for specialty items
-cp podiobooks-centos-base/epel.repo /etc/yum.repos.d/epel.repo
-cp podiobooks-centos-base/postgresql.repo /etc/yum.repos.d/postgresql.repo
-cp podiobooks-centos-base/CentOS-fasttrack.repo /etc/yum.repos.d/CentOS-fasttrack.repo
+cp ./podiobooks-centos-base/epel.repo /etc/yum.repos.d/epel.repo
+cp ./podiobooks-centos-base/postgresql.repo /etc/yum.repos.d/postgresql.repo
+cp ./podiobooks-centos-base/CentOS-fasttrack.repo /etc/yum.repos.d/CentOS-fasttrack.repo
 
 # Update centos
 yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
@@ -116,10 +116,10 @@ yum install -y --disablerepo=* --enablerepo=nginx nginx
 usermod -G podiobooks nginx
 
 # Add Supervisor Config File
-cp podiobooks-web/supervisord.conf /opt/podiobooks/supervisord.conf
+cp ./podiobooks-web/supervisord.conf /opt/podiobooks/supervisord.conf
 
 # Add initial setup file
-cp podiobooks-web/podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initial-setup.sh
+cp ./podiobooks-web/podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initial-setup.sh
 
 # Final Permissions Check
 chown -R podiobooks.podiobooks /opt/podiobooks
