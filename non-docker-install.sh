@@ -128,6 +128,8 @@ usermod -G podiobooks nginx
 # Add Supervisor Config File
 cp ./podiobooks-web/supervisord.conf /opt/podiobooks/supervisord.conf
 
+# Add Supervisor Stat
+
 # Add initial setup file
 cp ./podiobooks-web/podiobooks-initial-setup.sh /opt/podiobooks/podiobooks-initial-setup.sh
 
