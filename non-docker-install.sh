@@ -77,6 +77,8 @@ cp /etc/redis.conf /opt/podiobooks/data/redis.conf
 echo "127.0.0.1 redis" >> /etc/cloud/templates/hosts.redhat.tmpl
 echo "127.0.0.1 redis" >> /etc/hosts
 
+# Start Redis
+systemctl start redis
 
 ## Varnish
 yum update -y --nogpgcheck && yum upgrade -y --nogpgcheck
